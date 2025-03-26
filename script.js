@@ -1,6 +1,22 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("registration-form");
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM fully loaded and parsed");
+
+    //select the form
+   const form =
+    document.getElementById("registration-form");
+    if (!form) {
+        console.error("form not found! check the ID in HTML");
+    }  else{ 
+        console.log("form selected successfully:", form);
+    }
     const feedbackDiv = document.getElementById("form-feedback");
+          if (!feedbackDiv) {
+            console.error("Error: Feedbackdiv not found! check the ID in HTML.");
+          } else  {
+                    console.log("feedbackdiv selected successfully:", feedbackDiv);
+                };
+
+        
 
     form.addEventListener("submit", (event) => {
         event.preventDefault(); // Prevent form submission
@@ -9,8 +25,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const username = document.getElementById("username").value.trim();
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value.trim();
+        // Debugging: check values in the console
+        console.log("Username:",username);
+        console.log("Email:",email);
+        console.log("Password:",password);
 
-        let isValid = true;
+        if (!username || !email || !password){
+            console.error("one or more inputs are empty");
+        }
+    
+    let isValid = true;
         let messages = [];
 
         // Username validation
@@ -20,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Email validation
-        if (!email.includes("@") &&
+        if (!email.includes("@") || !
          email.includes(".")) {
             isValid = false;
             messages.push("Please enter a valid email address.");
