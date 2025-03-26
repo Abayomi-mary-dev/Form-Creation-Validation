@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Email validation
-        if (!email.includes("@") || !email.includes(".")) {
+        if (!email.includes("@") &&
+         email.includes(".")) {
             isValid = false;
             messages.push("Please enter a valid email address.");
         }
